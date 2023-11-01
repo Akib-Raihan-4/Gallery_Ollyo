@@ -7,19 +7,15 @@ export const SinglePhoto = forwardRef(({src, index, faded, style, ...props}, ref
     height: index === 0 ? 410 : 200,
     gridRowStart: index === 0 ? 'span 2' : null,
     gridColumnStart: index === 0 ? 'span 2' : null,
-    borderRadius:10,
-    border:1,
-    borderColor:'#000',
-    // backgroundImage: `url("${src}")`,
-    // backgroundSize: 'cover',
-    // backgroundPosition: 'center',
+    borderRadius:20,
     ...style,
   };
 
   const inlineImgStyles = {
     height: index === 0 ? 410 : 200,
-    borderRadius:10,
+    borderRadius:20,
     width: "100%",
+    border: '1px solid #c3c3c3',
   }
 
   const [src1, setSrc1] = useState(src)
