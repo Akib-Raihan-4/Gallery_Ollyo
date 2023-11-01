@@ -60,6 +60,12 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
       )}
       {selected && (
         <div style={overlayStyles} {...props}>
+          <input
+          type="checkbox"
+          checked={selected}
+          onChange={handleCheckboxChange}
+          style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
+          />
         </div>
       )}
       <img src={src} alt="" style={inlineImgStyles} {...props} />
