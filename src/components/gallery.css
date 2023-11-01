@@ -1,4 +1,48 @@
-.gallery {
+.gridLayout{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 10;
+    padding: 10;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .gallery {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
@@ -35,4 +79,4 @@
     max-height: 100%;
     max-width: 100%;
     border:transparent ;
-}
+} */
