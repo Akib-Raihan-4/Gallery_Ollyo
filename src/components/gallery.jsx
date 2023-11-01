@@ -13,6 +13,7 @@ const Gallery = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   const [activeId, setActiveId] = useState(null);
   const [items, setItems] = useState(photos);
+  const [selectedImages, setSelectedImages] = useState([]);
 
 
   
@@ -38,6 +39,22 @@ const Gallery = () => {
   const handleDragCancel = () => {
     setActiveId(null)
   }
+
+  const handleImageSelect = (src) => {
+    const isSelected = selectedImages.includes(src);
+
+    if (isSelected) {
+      setSelectedImages(selectedImages.filter((selectedSrc) => selectedSrc !== src));
+    } else {
+      setSelectedImages([...selectedImages, src]);
+    }
+  };
+
+  const handleDeleteSelectedImages = () => {
+    setItems(items.filter((src) => !selectedImages.includes(src)));
+    setSelectedImages([]);
+  };
+
   return (
     <>
       <DndContext
@@ -58,6 +75,8 @@ const Gallery = () => {
               <PhotoSort key={src}
               src= {src}
               index = {index}
+              onImageSelect={handleImageSelect}
+              selected={selectedImages.includes(src)}
               />
             ))}
 
@@ -69,6 +88,14 @@ const Gallery = () => {
           ):null}
         </DragOverlay>      
       </DndContext>
+      {selectedImages.length > 0 && (
+        <div className='border border-b-[#a78282] border-transparent'>
+          <h1 className='text-2xl font-bold my-6 ml-10'>
+            {selectedImages.length} Image(s) Selected
+          </h1>
+          <button onClick={handleDeleteSelectedImages}>Delete Selected Images</button>
+        </div>
+      )}
     </>
   );
 };
