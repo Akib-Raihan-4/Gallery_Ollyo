@@ -45,7 +45,8 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
           type="checkbox"
           checked={selected}
           onChange={handleCheckboxChange}
-          style={{ position: 'absolute', top: 10, left: 20, zIndex: 1 }}
+          style={{ position: 'absolute', top: 10, left: 20, zIndex: 1, height:15, width:15}
+        }
         />
       )}
       <img src={src} alt="" style={inlineImgStyles} {...props} />
