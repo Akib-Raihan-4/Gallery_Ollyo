@@ -87,6 +87,10 @@ const Gallery = () => {
                 selected={selectedImages.includes(src)}
               />
             ))}
+            <div className='add-images-div'>
+              <img src="images/image.svg" alt="" />
+              <p>Add Images</p>
+            </div>
           </div>
         </SortableContext>
         <DragOverlay adjustScale={true}>
@@ -95,7 +99,6 @@ const Gallery = () => {
           ) : null}
         </DragOverlay>
       </DndContext>
-      
     </>
   );
 };
