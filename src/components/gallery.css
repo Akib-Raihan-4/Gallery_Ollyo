@@ -5,6 +5,31 @@
     margin: 40px;
 }
 
+@media (max-width: 1024px) {
+    .gridLayout {
+      grid-template-columns: repeat(4, 1fr); /* 4 columns for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .gridLayout {
+      grid-template-columns: repeat(1, 1fr); /* 1 column for smaller screens */
+    }
+    
+    .add-images-div {
+      font-size: 14px;
+      padding: 8px;
+    }
+}
+  
+  /* Media query for even smaller screens */
+  @media (max-width: 480px) {
+    .add-images-div {
+      font-size: 12px;
+      padding: 6px;
+    }
+  }
+
 .deleteButton:hover{
     color: aliceblue;
     opacity: 0.85;
@@ -32,74 +57,3 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    justify-content: center; 
-    align-content: center; 
-    margin: 10px 40px;
-    
-}
-
-.image {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    object-fit: cover;
-    width: fit-content;
-    border-radius: 20px; 
-}
-
-.image img {
-    max-height: 100%; 
-    max-width: 100%;
-    border-radius: 20px;
-    border-radius: 20px;
-    border: 2px solid #c3c3c3;
-}
-
-.featured {
-    grid-row: span 2;
-    grid-column: span 2;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-}
-
-.featured img {
-    max-height: 100%;
-    max-width: 100%;
-    border:transparent ;
-} */
