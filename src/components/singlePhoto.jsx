@@ -13,6 +13,9 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
     position: 'relative',
     ...style,
   };
+  if (window.innerWidth <= 480) {
+    inlineStyles.width =  "100%";
+  }
 
   const inlineImgStyles = {
     height: index === 0 ? 410 : 200,
