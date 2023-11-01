@@ -4,7 +4,10 @@ A frontend design of a gallery.
 
 ## A Working example
 
-![App Screenshot](https://github.com/Akib-Raihan-4/EduBot/blob/main/ScreenShot%20of%20Chatbot.png)
+![App Screenshot](./SS/SS1.png)
+![App Screenshot](./SS/SS2.png)
+![App Screenshot](./SS/SS3.png)
+
 
 ## Features
 
