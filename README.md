@@ -1,6 +1,6 @@
 # Gallery-Ollyo
 
-A frontend design of a gallery.
+A frontend design of a gallery, where you can reorder images with drag and drop and also delete images.
 
 ## A Working example
 
