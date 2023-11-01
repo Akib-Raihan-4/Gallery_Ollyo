@@ -10,7 +10,7 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
     gridRowStart: index === 0 ? 'span 2' : null,
     gridColumnStart: index === 0 ? 'span 2' : null,
     borderRadius: 20,
-    position: 'relative', // Added relative positioning
+    position: 'relative',
     ...style,
   };
 
@@ -19,6 +19,20 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
     borderRadius: 20,
     width: "100%",
     border: '1px solid #c3c3c3',
+  };
+
+  const overlayStyles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+    borderRadius: 20,
   };
 
   const handleMouseEnter = () => {
@@ -30,7 +44,7 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
   };
 
   const handleCheckboxChange = () => {
-    onImageSelect(src); // Notify the Gallery component about the selection
+    onImageSelect(src); 
   };
 
   return (
@@ -41,15 +55,22 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
       onMouseLeave={handleMouseLeave}
     >
       {isHovered && (
+        <div style={overlayStyles} {...props}>
+        </div>
+      )}
+      {selected && (
+        <div style={overlayStyles} {...props}>
+        </div>
+      )}
+      <img src={src} alt="" style={inlineImgStyles} {...props} />
+      {isHovered && (
         <input
           type="checkbox"
           checked={selected}
           onChange={handleCheckboxChange}
-          style={{ position: 'absolute', top: 10, left: 20, zIndex: 1, height:15, width:15}
-        }
+          style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
         />
       )}
-      <img src={src} alt="" style={inlineImgStyles} {...props} />
     </div>
   );
 });

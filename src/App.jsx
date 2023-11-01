@@ -1,6 +1,4 @@
-
 import './App.css';
-import Nav from './components/nav';
 import Gallery from './components/gallery';
 
 function App() {
