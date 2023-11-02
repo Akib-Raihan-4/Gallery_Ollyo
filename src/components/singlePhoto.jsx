@@ -2,7 +2,6 @@ import React, { forwardRef, useState } from 'react';
 
 export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect, selected, ...props }, ref) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isSelected, setIsSelected] = useState(selected);
 
   const inlineStyles = {
     opacity: faded ? '0.2' : '1',
@@ -14,9 +13,8 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
     position: 'relative',
     ...style,
   };
-
   if (window.innerWidth <= 480) {
-    inlineStyles.width = "100%";
+    inlineStyles.width = index === "100%";
   }
 
   const inlineImgStyles = {
@@ -49,13 +47,7 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
   };
 
   const handleCheckboxChange = () => {
-    onImageSelect(src);
-  };
-
-  const handleImageClick = () => {
-    if (window.innerWidth <= 480) {
-      setIsSelected(!isSelected); // Toggle the selection on mobile
-    }
+    onImageSelect(src); 
   };
 
   return (
@@ -64,27 +56,26 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
       style={inlineStyles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleImageClick} // Add onClick event
     >
       {isHovered && (
         <div style={overlayStyles} {...props}>
         </div>
       )}
-      {isSelected && (
+      {selected && (
         <div style={overlayStyles} {...props}>
           <input
-            type="checkbox"
-            checked={isSelected}
-            onChange={handleCheckboxChange}
-            style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
+          type="checkbox"
+          checked={selected}
+          onChange={handleCheckboxChange}
+          style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
           />
         </div>
       )}
       <img src={src} alt="" style={inlineImgStyles} {...props} />
-      {isHovered && !isSelected && (
+      {isHovered && (
         <input
           type="checkbox"
-          checked={isSelected}
+          checked={selected}
           onChange={handleCheckboxChange}
           style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
         />
