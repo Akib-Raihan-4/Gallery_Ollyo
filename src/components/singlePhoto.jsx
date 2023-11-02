@@ -1,13 +1,7 @@
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect, selected, ...props }, ref) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-
-    setIsMobile(window.innerWidth <= 480);
-  },[]);
 
   const inlineStyles = {
     opacity: faded ? '0.2' : '1',
@@ -19,15 +13,8 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
     position: 'relative',
     ...style,
   };
-
-  if (isMobile) {
-    inlineStyles.cursor = 'pointer';
-  } else {
-    inlineStyles.cursor = 'grab';
-  }
-
   if (window.innerWidth <= 480) {
-    inlineStyles.width = "100%";
+    inlineStyles.width = index === "100%";
   }
 
   const inlineImgStyles = {
@@ -60,13 +47,7 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
   };
 
   const handleCheckboxChange = () => {
-    onImageSelect(src);
-  };
-
-  const handleImageClick = () => {
-    if (isMobile) {
-      onImageSelect(src); 
-    }
+    onImageSelect(src); 
   };
 
   return (
@@ -75,18 +56,18 @@ export const SinglePhoto = forwardRef(({ src, index, faded, style, onImageSelect
       style={inlineStyles}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleImageClick}
     >
       {isHovered && (
-        <div style={overlayStyles} {...props}></div>
+        <div style={overlayStyles} {...props}>
+        </div>
       )}
       {selected && (
         <div style={overlayStyles} {...props}>
           <input
-            type="checkbox"
-            checked={selected}
-            onChange={handleCheckboxChange}
-            style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
+          type="checkbox"
+          checked={selected}
+          onChange={handleCheckboxChange}
+          style={{ position: 'absolute', top: 10, left: 20, zIndex: 2, height: 15, width: 15 }}
           />
         </div>
       )}
