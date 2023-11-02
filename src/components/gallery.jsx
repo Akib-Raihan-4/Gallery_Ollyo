@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import './gallery.css';
-import {
-  DndContext,
-  DragOverlay,
-  MouseSensor,
-  TouchSensor,
-  closestCenter,
-  useSensor,
-  useSensors
-} from '@dnd-kit/core';
-import {
-  SortableContext,
-  arrayMove,
-  rectSortingStrategy
-} from '@dnd-kit/sortable';
+import { DndContext, DragOverlay, MouseSensor, TouchSensor, closestCenter, useSensor, useSensors} from '@dnd-kit/core';
+import { SortableContext, arrayMove, rectSortingStrategy} from '@dnd-kit/sortable';
 import { PhotoSort } from './photoSort';
 import photos from './photosUrl.json';
 import { SinglePhoto } from './singlePhoto';
